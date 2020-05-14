@@ -10,8 +10,8 @@ class Basket extends React.Component {
 
   render() {
     const { basket } = this.props;
-    const buildBasket = basket.map((mushroom) => (
-      <Mushroom key={mushroom.id} mushroom={mushroom}/>
+    const buildBasket = basket.map((mushroom, index) => (
+      <Mushroom key={`pickedMushroom${index + 1}`} mushroom={mushroom}/>
     ));
     return (
       <div className="Basket d-flex flex-wrap">

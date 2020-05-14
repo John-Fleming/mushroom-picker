@@ -176,8 +176,8 @@ const mushrooms = [
     description: 'The caterpillar fungus (cordyceps sinesis) preys on insects, killing them and eventually growing out of their heads!',
     imgUrl: 'https://grocycle.com/wp-content/uploads/2019/04/Parasitic-Mushrooms.jpg',
     isMagic: false,
-    isPoisonous: false,
-    isDeadly: true,
+    isPoisonous: true,
+    isDeadly: false,
   },
 ];
 
@@ -187,9 +187,17 @@ const getMushrooms = () => mushrooms;
 
 const getBasket = () => basket;
 
+const removeTwoMushrooms = () => {
+  basket.splice(0, 2);
+};
+
 const pickAMushroom = () => {
   const selectedMushroom = mushrooms[Math.floor(Math.random() * mushrooms.length)];
-  basket.push(selectedMushroom);
+  if (selectedMushroom.isPoisonous) {
+    removeTwoMushrooms();
+  } else {
+    basket.push(selectedMushroom);
+  }
 };
 
 export default { getMushrooms, getBasket, pickAMushroom };

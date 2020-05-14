@@ -11,7 +11,7 @@ const mushrooms = [
   {
     id: 'mushroom2',
     name: 'cremini',
-    description: 'Cremini mushrooms, also called crimini mushrooms, are actually part of the same ​species as button mushrooms (Agaricus bisporus), but are a brown variation with a slightly deeper flavour.',
+    description: 'Cremini mushrooms, also called crimini mushrooms, are a brown variation with a slightly deeper flavour.',
     imgUrl: 'https://grocycle.com/wp-content/uploads/2019/04/Cremini-Mushrooms.jpg',
     isMagic: false,
     isPoisonous: false,
@@ -172,8 +172,8 @@ const mushrooms = [
   },
   {
     id: 'mushroom20',
-    name: 'chaga',
-    description: 'Parasitic mushrooms don\'t just limit themselves to trees and plants though. The caterpillar fungus (cordyceps sinesis) preys on insects, killing them and eventually growing out of their heads!',
+    name: 'caterpillar fungus',
+    description: 'The caterpillar fungus (cordyceps sinesis) preys on insects, killing them and eventually growing out of their heads!',
     imgUrl: 'https://grocycle.com/wp-content/uploads/2019/04/Parasitic-Mushrooms.jpg',
     isMagic: false,
     isPoisonous: false,
@@ -181,6 +181,15 @@ const mushrooms = [
   },
 ];
 
+const basket = [];
+
 const getMushrooms = () => mushrooms;
 
-export default { getMushrooms };
+const getBasket = () => basket;
+
+const pickAMushroom = () => {
+  const selectedMushroom = mushrooms[Math.floor(Math.random() * mushrooms.length)];
+  console.log(selectedMushroom);
+};
+
+export default { getMushrooms, getBasket, pickAMushroom };

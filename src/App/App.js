@@ -20,9 +20,9 @@ class App extends React.Component {
     const { mushrooms, basket } = this.state;
     return (
       <div className="App">
-        <h2>Forest</h2>
+        <h2 className="mb-4">Forest</h2>
         <Forest mushrooms={mushrooms}/>
-        <h2>Basket</h2>
+        <h2 className="my-4">Basket</h2>
         <Basket basket={basket}/>
       </div>
     );

@@ -1,7 +1,13 @@
 import React from 'react';
 import './Mushroom.scss';
+import PropTypes from 'prop-types';
+import mushroomShape from '../../helpers/propz/mushroomShape';
 
 class Mushroom extends React.Component {
+  static propTypes = {
+    mushrooms: PropTypes.arrayOf(mushroomShape.mushroomShape),
+  }
+
   render() {
     const { mushroom } = this.props;
     return (

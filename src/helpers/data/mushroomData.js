@@ -181,7 +181,7 @@ const mushrooms = [
   },
 ];
 
-const basket = [];
+let basket = [];
 
 const getMushrooms = () => mushrooms;
 
@@ -191,10 +191,16 @@ const removeTwoMushrooms = () => {
   basket.splice(0, 2);
 };
 
+const emptyBasket = () => {
+  basket = [];
+};
+
 const pickAMushroom = () => {
   const selectedMushroom = mushrooms[Math.floor(Math.random() * mushrooms.length)];
   if (selectedMushroom.isPoisonous) {
     removeTwoMushrooms();
+  } else if (selectedMushroom.isDeadly) {
+    emptyBasket();
   } else {
     basket.push(selectedMushroom);
   }

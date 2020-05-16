@@ -183,6 +183,10 @@ const mushrooms = [
 
 let basket = [];
 
+let pickedDeadlyMushroom = false;
+
+const deadlyMushroomStatus = () => pickedDeadlyMushroom;
+
 const getMushrooms = () => mushrooms;
 
 const getMushroomTypes = () => {
@@ -199,27 +203,30 @@ const getBasket = () => basket;
 
 const getMushroomTypesInBasket = () => {
   const mushroomTypesInBasket = basket.map((mushroom) => mushroom.name);
-  // console.error('basket mushrooms', mushroomTypesInBasket);
   return mushroomTypesInBasket;
 };
 
 const removeTwoMushrooms = () => {
-  console.error('picked poisonous mushroom');
+  // eslint-disable-next-line no-alert
+  alert('Oh no! You picked a poisonous mushroom!');
   basket.splice(0, 2);
+  pickedDeadlyMushroom = false;
 };
 
 const emptyBasket = () => {
-  console.error('picked deadly mushroom');
+  // eslint-disable-next-line no-alert
+  alert('Oh no! You picked a deadly mushroom!');
   basket = [];
+  pickedDeadlyMushroom = true;
 };
 
 const addEachMushroom = (selectedMushroom) => {
-  console.error('picked magic mushroom');
   mushrooms.forEach((mushroom) => {
     if (mushroom.isDeadly === false && mushroom.isPoisonous === false) {
       basket.push(mushroom);
     }
   });
+  pickedDeadlyMushroom = false;
 };
 
 const pickAMushroom = () => {
@@ -232,7 +239,9 @@ const pickAMushroom = () => {
     addEachMushroom(selectedMushroom);
   } else {
     basket.push(selectedMushroom);
+    pickedDeadlyMushroom = false;
   }
+  return selectedMushroom;
 };
 
 export default {
@@ -241,4 +250,5 @@ export default {
   pickAMushroom,
   getMushroomTypes,
   getMushroomTypesInBasket,
+  deadlyMushroomStatus,
 };

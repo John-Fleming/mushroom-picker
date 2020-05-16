@@ -210,7 +210,7 @@ const removeTwoMushrooms = () => {
   // eslint-disable-next-line no-alert
   alert('Oh no! You picked a poisonous mushroom!');
   basket.splice(0, 2);
-  pickedDeadlyMushroom = false;
+  pickedDeadlyMushroom = true;
 };
 
 const emptyBasket = () => {

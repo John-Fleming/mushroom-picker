@@ -148,7 +148,7 @@ const mushrooms = [
     name: 'lion\'s mane',
     description: 'Lion\'s mane grows in shaggy clumps on the side of trees and can look a bit like stalactite formations that hang inside of caves.',
     imgUrl: 'https://grocycle.com/wp-content/uploads/2019/04/Lions-Mane-Mushrooms.jpg',
-    isMagic: true,
+    isMagic: false,
     isPoisonous: false,
     isDeadly: false,
   },
@@ -188,11 +188,22 @@ const getMushrooms = () => mushrooms;
 const getBasket = () => basket;
 
 const removeTwoMushrooms = () => {
+  console.error('picked poisonous mushroom');
   basket.splice(0, 2);
 };
 
 const emptyBasket = () => {
+  console.error('picked deadly mushroom');
   basket = [];
+};
+
+const addEachMushroom = (selectedMushroom) => {
+  console.error('picked magic mushroom');
+  mushrooms.forEach((mushroom) => {
+    if (mushroom.isDeadly === false && mushroom.isPoisonous === false) {
+      basket.push(mushroom);
+    }
+  });
 };
 
 const pickAMushroom = () => {
@@ -201,6 +212,8 @@ const pickAMushroom = () => {
     removeTwoMushrooms();
   } else if (selectedMushroom.isDeadly) {
     emptyBasket();
+  } else if (selectedMushroom.isMagic) {
+    addEachMushroom(selectedMushroom);
   } else {
     basket.push(selectedMushroom);
   }

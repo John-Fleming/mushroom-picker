@@ -16,10 +16,19 @@ class App extends React.Component {
     this.setState({ mushrooms, basket });
   }
 
+  checkBasket = () => {
+    const mushroomsInBasket = mushroomData.getMushroomTypesInBasket();
+    const mushroomTypes = mushroomData.getMushroomTypes();
+    if (mushroomTypes.every((mushroom) => mushroomsInBasket.includes(mushroom))) {
+      alert('You got all the mushrooms!');
+    }
+  }
+
   pickMushroomEvent = (e) => {
     mushroomData.pickAMushroom();
     const basket = mushroomData.getBasket();
     this.setState({ basket });
+    this.checkBasket();
   }
 
   render() {

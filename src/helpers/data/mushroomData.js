@@ -199,9 +199,8 @@ const emptyBasket = () => {
 
 const addEachMushroom = (selectedMushroom) => {
   console.error('picked magic mushroom');
-  basket.push(selectedMushroom);
   mushrooms.forEach((mushroom) => {
-    if (mushroom.isDeadly === false && mushroom.isPoisonous === false && mushroom.isMagic === false) {
+    if (mushroom.isDeadly === false && mushroom.isPoisonous === false) {
       basket.push(mushroom);
     }
   });

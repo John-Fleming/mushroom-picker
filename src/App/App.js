@@ -9,6 +9,7 @@ class App extends React.Component {
     mushrooms: [],
     basket: [],
     dark: false,
+    victory: false,
   }
 
   componentDidMount() {
@@ -24,6 +25,7 @@ class App extends React.Component {
     if (mushroomTypes.every((mushroomType) => mushroomsInBasket.includes(mushroomType))) {
       // eslint-disable-next-line no-alert
       alert('You got all the mushrooms! You win!');
+      this.setState({ victory: true });
     }
   }
 
@@ -35,10 +37,24 @@ class App extends React.Component {
     this.checkBasket();
   }
 
+  appBackgroundColor = () => {
+    const { dark, victory } = this.state;
+    let classString = '';
+    if (dark) {
+      classString = 'App dark-mode';
+    } else if (victory) {
+      classString = 'App victory-mode';
+    } else {
+      classString = 'App';
+    }
+    return classString;
+  }
+
   render() {
     const { mushrooms, basket, dark } = this.state;
     return (
-      <div className={`App ${dark ? 'dark-mode' : ''}`}>
+      // <div className={`App ${dark ? 'dark-mode' : ''}`}>
+      <div className={this.appBackgroundColor()}>
         <h1>Pick a Mushroom:</h1>
         {
           dark ? (

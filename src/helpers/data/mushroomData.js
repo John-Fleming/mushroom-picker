@@ -185,7 +185,23 @@ let basket = [];
 
 const getMushrooms = () => mushrooms;
 
+const getMushroomTypes = () => {
+  const mushroomTypes = [];
+  mushrooms.forEach((mushroom) => {
+    if (mushroom.isDeadly === false && mushroom.isPoisonous === false && mushroom.isMagic === false) {
+      mushroomTypes.push(mushroom.name);
+    }
+  });
+  return mushroomTypes;
+};
+
 const getBasket = () => basket;
+
+const getMushroomTypesInBasket = () => {
+  const mushroomTypesInBasket = basket.map((mushroom) => mushroom.name);
+  // console.error('basket mushrooms', mushroomTypesInBasket);
+  return mushroomTypesInBasket;
+};
 
 const removeTwoMushrooms = () => {
   console.error('picked poisonous mushroom');
@@ -219,4 +235,10 @@ const pickAMushroom = () => {
   }
 };
 
-export default { getMushrooms, getBasket, pickAMushroom };
+export default {
+  getMushrooms,
+  getBasket,
+  pickAMushroom,
+  getMushroomTypes,
+  getMushroomTypesInBasket,
+};
